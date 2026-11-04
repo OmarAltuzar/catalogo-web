@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo Web de Papelería</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header>
+    <div class="barra">
+      <h1>Catálogo Web de Papelería</h1>
+      <div class="botones-header">
+        <button id="btn-historial" class="btn-historial" type="button">
+          📜 Historial de Notas
+        </button>
+        <button id="btn-carrito" class="btn-carrito" type="button">
+          🛒 Mi Pedido (<span id="contador">0</span>)
+        </button>
+      </div>
+    </div>
+    <p>Encuentra una gran variedad de útiles escolares, artículos de oficina y material de arte.</p>
+    <input type="search" id="buscador" placeholder="Buscar producto por nombre o descripción..." aria-label="Buscar producto">
+  </header>
+
+  <main>
+    <section class="controles">
+      <div id="categorias" class="categorias" aria-label="Categorías"></div>
+      <div class="opciones">
+        <label>Ordenar por
+          <select id="orden">
+            <option value="nombre">Nombre (A-Z)</option>
+            <option value="precio-asc">Precio: menor a mayor</option>
+            <option value="precio-desc">Precio: mayor a menor</option>
+          </select>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="solo-favoritos"> Favoritos
+        </label>
+      </div>
+    </section>
+
+    <p id="resumen" class="resumen"></p>
+    <section id="lista" class="lista"></section>
+    <p id="sin-resultados" class="sin-resultados" hidden>No se encontraron productos en la búsqueda.</p>
+  </main>
+
+  <footer>
+    <p>Catálogo Digital de Papelería · Todos los derechos reservados</p>
+  </footer>
+
+  <!-- Fondo oscuro -->
+  <div id="fondo" class="fondo" hidden></div>
+
+  <!-- Panel del carrito con el campo del nombre -->
+  <aside id="panel-carrito" class="panel" aria-label="Mi pedido">
+    <div class="panel-cabecera">
+      <h2>Mi Pedido Actual</h2>
+      <button id="cerrar-carrito" class="cerrar" type="button" aria-label="Cerrar">✕</button>
+    </div>
+    <div id="items-carrito" class="items"></div>
+    <p id="carrito-vacio" class="carrito-vacio">Aún no has agregado productos al pedido.</p>
+    <div class="panel-pie">
+      <div class="cliente-seccion">
+        <label for="nombre-cliente">Nombre del cliente:</label>
+        <input type="text" id="nombre-cliente" placeholder="Ej. Juan Pérez">
+      </div>
+      <p class="total">Total: <strong id="total-carrito">$0.00</strong></p>
+      <button id="btn-pedir" class="btn principal" type="button">Generar Nota y Enviar por WhatsApp</button>
+      <button id="btn-vaciar" class="btn secundario" type="button">Vaciar pedido</button>
+    </div>
+  </aside>
+
+  <!-- Panel lateral del Historial de Notas -->
+  <aside id="panel-historial" class="panel" aria-label="Historial de Notas">
+    <div class="panel-cabecera">
+      <h2>Historial de Notas Generadas</h2>
+      <button id="cerrar-historial" class="cerrar" type="button" aria-label="Cerrar">✕</button>
+    </div>
+    <div id="lista-historial" class="items"></div>
+    <p id="historial-vacio" class="historial-vacio">No hay notas de pedidos registradas todavía.</p>
+    <div class="panel-pie">
+      <button id="btn-borrar-historial" class="btn secundario" type="button">Borrar Historial</button>
+    </div>
+  </aside>
+
+  <!-- Ventana Modal Detalle -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" hidden>
+    <button id="cerrar-modal" class="cerrar" type="button" aria-label="Cerrar">✕</button>
+    <div id="contenido-modal"></div>
+  </div>
+
+  <script src="catalogo.js"></script>
+</body>
+</html>
